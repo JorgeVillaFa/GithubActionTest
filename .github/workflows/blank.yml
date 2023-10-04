@@ -1,0 +1,30 @@
+name: Hello World with PR Details
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Print Hello World
+      run: echo "Hello World"
+    
+    - name: Print PR Details
+      run: |
+        echo "Autor: ${{ steps.pr.outputs.pr_author }}"
+        echo "Cambios: "
+        echo "${{ steps.pr.outputs.pr_changes }}"
+        echo "Ultimo Commit:"
+        echo "${{ steps.pr.outputs.last_commit }}"
+
+
+
+
+
